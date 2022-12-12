@@ -14,16 +14,19 @@ import logging
 import threading
 from tqdm import tqdm
 
-# TODO: Update Radar Package
-# from library.Rad24GHz import Rad24GHz
 from library.DataScripts.storetelemetry import StoreTelemetry
 from library.FlightScripts.squareflight import SquareFlight
 from library.FlightScripts.tagflight import TagFlight
+# TODO: Import Radar Package (wherever placed) and conduct test
 
 #--------------------------------------------------
 #-------------- ESTABLISH ARGUMENTS  
 #--------------------------------------------------    
 # -- Declare Program Values
+
+# Run --sitl at the end of command line function if we want to run
+# a simulation rather than connecting to an actual drone
+
 parser = argparse.ArgumentParser(
                     prog = 'MMWave Radar Drone',
                     description = 'Millimeter Wave Radar Drone Script Handler',
@@ -35,6 +38,7 @@ args = parser.parse_args()
 #--------------------------------------------------
 #-------------- IMPORT REMAINING LIBRARIES  
 #--------------------------------------------------    
+# we should only import the picamera package if not running in a simulation
 if not args.sitl:
     from library.DataScripts.camera import CameraCapture
 
@@ -46,20 +50,22 @@ if not args.sitl:
 
 #--------------------------------------------------
 #-------------- INITIALIZE  
-#--------------------------------------------------      
+#-------------------------------------------------- 
+# start logging     
 logging.basicConfig(level=logging.NOTSET,
                     format="%(asctime)s (T:%(thread)d):- %(message)s")
 
+# declare locks for threading
 lock = threading.Lock()
 
 #--------------------------------------------------
 #-------------- CONNECTION  
 #--------------------------------------------------    
 # -- Declare Connection System
-if args.sitl:
+if args.sitl: # if simulation
     sitl = dronekit_sitl.start_default()
     connection_string = sitl.connection_string()
-else: # if real drone used
+else: # else if real drone used
     connection_string = "/dev/ttyACM0" # USB Connection
     # connection_string = "/dev/ttyAMA0" # Serial Connection
     baud_rate = 115200
