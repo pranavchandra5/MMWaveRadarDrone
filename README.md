@@ -13,7 +13,12 @@ This folder contains the threading class for the PiCamera, Telemetry, and Drone 
 This is the central module for the project. I will explain installation instructions later that will clarify this script.
 
 ## Code Installation / Execution
-The only script we need to run here is drone.py.
+If connecting to the RaspberryPi through an SSH connection, run:
+```ssh
+ssh pi@10.193.254.54
+``` 
+
+Next, the only script we need to run here is drone.py.
 To run the script in a simulation, run
 ```py
 python drone.py --sitl
