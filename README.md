@@ -9,6 +9,8 @@ Here we have old scripts (including old flight scripts and other data storing fi
 This folder will contain all data that we store from the program. For example, under the camera subdirectory, we store all images taken by the PiCamera. Under the telemetry subdirectory, we will store CSV and MAT files that store all telemetry info of the drone.
 ### ./library/
 This folder contains the threading class for the PiCamera, Telemetry, and Drone Flight Path Scripts. Since each different thread needs to built in its own class, I placed each one in a different python module and placed the data collection threads under ./library/DataScripts and the flight path scripts under ./library/FlightScripts.
+
+There is a special file under this folder called template.py. This is a template framework that can be used to develop future functionality (ie Radar Software) that needs to be performed in a thread. 
 ### drone.py
 This is the central module for the project. I will explain installation instructions later that will clarify this script.
 
