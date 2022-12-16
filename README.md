@@ -27,7 +27,7 @@ This is the central module for the project. I will explain installation instruct
 If connecting to the RaspberryPi through an SSH connection, run:
 
 ```ssh
-ssh pi@10.193.254.54
+ssh pi@[IP_ADDRESS]
 ```
 
 Next, the only script we need to run here is drone.py.

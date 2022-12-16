@@ -97,7 +97,7 @@ class Template(threading.Thread):
         # NOTE: you MUST add the final waypoint twice
 
         # point1 = self.get_location_metres(aLocation, 0, aSize)
-        # cmds.add(Command( 0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, point1.lat, point1.lon, self.FLIGHT_ALT))
+        # cmds.add(Command( 0, 0, 0, mavutil.mavlink. MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, point1.lat, point1.lon, self.FLIGHT_ALT))
 
         print(" Upload new commands to vehicle")
         cmds.upload()
